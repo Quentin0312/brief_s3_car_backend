@@ -14,6 +14,8 @@ print("avant suppr", str(len(df.index)))
 
 df = dropRowsWithValues(df, ['სხვა', 'TESLA'],
                         'Manufacturer')  # Manufacturer => 3 lignes
+# 0.5 ; 0.7 ; 0.8 ; 0.3 à ajouter comme valeurs abérantes ? => Faire autrement =>
+# extraire turbo dans une nouvelle colonne puis mettre des limites min et max
 df = dropRowsWithValues(
     df, ['0', '0.1', '0.2', '0.4', '20'], 'Engine volume')  # Engine volume => 47 lignes
 df = clean_price(df, min=500, max=1000000)  # Price => 1664 lignes

@@ -35,7 +35,7 @@ for column in columns:
 #
 # TODO:
 # remplacer les valeur par 02-Mar=>3 ; 04-May=>5 ; >5 => 5
-# Reste à vérif => (levy), model
+# Reste à vérif => (levy), model, engine volume, cylinders, gear box type, drive wheels, wheel, doors
 # Valeurs abbérantes trouvés:
 # Créer une nouvelle colonne bool turbo
 # Vérif format et type de données de chaques colonnes
