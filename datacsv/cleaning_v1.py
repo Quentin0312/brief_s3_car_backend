@@ -23,3 +23,5 @@ df = clean_mileage(df, min=500, max=1000000)  # Mileage => 805 lignes
 
 print("après suppr", str(len(df.index)))
 # ----------------------------Labos-----------------------------------
+# Colonne Model contient des mots en géorgien ... =>
+# ces mots sont à suppr sans suppr la ligne !

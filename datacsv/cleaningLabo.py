@@ -35,25 +35,32 @@ for column in columns:
 #
 # TODO:
 # remplacer les valeur par 02-Mar=>3 ; 04-May=>5 ; >5 => 5
-# Reste à vérif => (levy), mileage, model
+# Reste à vérif => (levy), model
 # Valeurs abbérantes trouvés:
 # Créer une nouvelle colonne bool turbo
 # Vérif format et type de données de chaques colonnes
 # Utiliser df.plot.hist()
 # Faire un notebook
-
+# -----------------------------------------------------------------
 # print(df['Price'].unique())
-liste_price = []
-for elt in df['Mileage'].unique():
-    liste_price.append(int(elt[:-3]))
+# liste_price = []
+# for elt in df['Mileage'].unique():
+#     liste_price.append(int(elt[:-3]))
 
-liste_price.sort()
+# liste_price.sort()
 # print(liste_price)
 
-df['Mileage'] = df['Mileage'].mask(df['Mileage'].notnull(),
-                                   other=df['Mileage'].str[:-3])
+# df['Mileage'] = df['Mileage'].mask(df['Mileage'].notnull(),
+#                                    other=df['Mileage'].str[:-3])
 
-print(df.dtypes)
-df['Mileage'] = df['Mileage'].astype(int)
-print(df.dtypes)
-print(df.head())
+# print(df.dtypes)
+# df['Mileage'] = df['Mileage'].astype(int)
+# print(df.dtypes)
+# print(df.head())
+# ------------------------------------------------------------------
+liste_price = []
+for elt in df['Model'].unique():
+    liste_price.append(elt)
+
+liste_price.sort()
+print(liste_price)
