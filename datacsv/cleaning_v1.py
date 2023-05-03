@@ -1,7 +1,9 @@
-import pandas
-
-import pandas as pd
 from cleaning_func import dropRowsWithValues, clean_mileage, clean_price
+import pandas as pd
+import pandas
+alphabet_georgien = ['ა', 'ბ', 'გ', 'დ', 'ე', 'ვ', 'ზ', 'თ', 'ი', 'კ', 'ლ', 'მ', 'ნ', 'ო',
+                     'პ', 'ჟ', 'რ', 'ს', 'ტ', 'უ', 'ფ', 'ქ', 'ღ', 'ყ', 'შ', 'ჩ', 'ც', 'ძ', 'წ', 'ჭ', 'ხ', 'ჯ', 'ჰ']
+
 
 df = pd.read_csv('./datacsv/car_price_prediction.csv')
 
