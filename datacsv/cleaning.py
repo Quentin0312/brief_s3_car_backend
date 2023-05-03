@@ -19,5 +19,21 @@ df.replace('-', 'NA', inplace=True)
 df.drop(df[df['Levy'] == 'NA'].index, inplace=True)
 print("après replace '-'=>'NA' puis drop=> ", len(df.index))
 
-# TODO:
 # Valeurs abérantes
+# Vérifier les valeurs distinctes
+
+columns = ['Manufacturer', 'Prod. year', 'Category', 'Leather interior', 'Fuel type',
+           'Engine volume', 'Cylinders', 'Gear box type', 'Drive wheels', 'Doors', 'Wheel', 'Color', 'Airbags']
+for column in columns:
+    print(column, "=>", df[column].unique())
+
+# TODO:
+# Neettoyer les valeurs abbérantes
+# Reste à vérif => price, levy, mileage, model
+# Valeurs abbérantes trouvés:
+    # Engine volume
+    # 0 ; 0.1 ; 0.2 ; 20
+    # Fuel type
+    # Tesla model x petrol... => pour les tesla changer en electric mais les autres ?
+    # Doors
+    # audi coupe >5 portes ?!?
