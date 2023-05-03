@@ -1,9 +1,7 @@
-# TODO: Précisez le nb de ligne suppr à chaque drop
-
 import pandas
 
 import pandas as pd
-from cleaning_func import dropDuplicates, dropRowWithValue, dropRowsWithValues, clean_mileage
+from cleaning_func import dropRowsWithValues, clean_mileage, clean_price
 
 df = pd.read_csv('./datacsv/car_price_prediction.csv')
 
@@ -13,13 +11,14 @@ df = df[['Price', 'Manufacturer', 'Model', 'Prod. year', 'Category', 'Leather in
 
 # Valeurs abérantes
 print("avant suppr", str(len(df.index)))
-df = dropRowsWithValues(df, ['სხვა', 'TESLA'], 'Manufacturer')  # Manufacturer
+
+df = dropRowsWithValues(df, ['სხვა', 'TESLA'],
+                        'Manufacturer')  # Manufacturer => 3 lignes
 df = dropRowsWithValues(
-    df, ['0', '0.1', '0.2', '0.4', '20'], 'Engine volume')  # Engine volume
-df.drop(df[df['Price'] > 1000000].index, inplace=True)  # Price
-df.drop(df[df['Price'] < 500].index, inplace=True)  # Price
-df = clean_mileage(df, min=500, max=1000000)  # Mileage
-# => Suppr total
+    df, ['0', '0.1', '0.2', '0.4', '20'], 'Engine volume')  # Engine volume => 47 lignes
+df = clean_price(df, min=500, max=1000000)  # Price => 1664 lignes
+df = clean_mileage(df, min=500, max=1000000)  # Mileage => 805 lignes
+# => Suppr total: 2368
 
 
 print("après suppr", str(len(df.index)))

@@ -2,14 +2,14 @@
 # Toutes sauf levy, airbags et color
 
 import pandas as pd
-from cleaning_func import dropDuplicates, dropRowWithValue, dropRowsWithValues
+from cleaning_func import dropRowWithValue, dropRowsWithValues
 
 df = pd.read_csv('./datacsv/car_price_prediction.csv')
 # print(df.info())
 
 
 # Vérif les doublons ID -----------Pas de doublon-------------------
-# df = dropDuplicates(df, 'ID')
+# df.drop_duplicates(subset=['ID'], keep='first', inplace=True)
 
 
 # valeurs manquantes---------------Aucune-----------
