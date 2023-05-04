@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn import svm
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MultiLabelBinarizer as mlb
 
 # Préparer les datas du csc pour l'IA => encodage, normalisation, ...
 
@@ -25,4 +26,6 @@ class tests:
     def mini_poc_test():
         df = pd.read_csv('./datacsv/mini_poc.csv')
         test = len(df.index)
+        # Encoder "Manufacturer"
+        mlb.fit_transform(y=df['Manufacturer'])
         return test
