@@ -13,9 +13,10 @@ def dropRowWithValue(df: pd.DataFrame, value: Union[int, str], column: str):
     return df
 
 
-def dropRowsWithValues(df: pd.DataFrame, values: list[str], column: str):
+def clean_manufacturer(df: pd.DataFrame, values: list[str], column: str):
     for elt in values:
         df = dropRowWithValue(df, elt, column)
+
     return df
 
 
@@ -43,7 +44,7 @@ def clean_engine_volume(df: pd.DataFrame, min: float, max: float):
     # Créer une nouvelle colone turbo remplit
     df.loc[df['Engine volume'].str.contains('Turbo'), 'Turbo'] = True
     df.loc[df['Turbo'] != True, 'Turbo'] = False
-
+    df['Turbo'] = df['Turbo'].astype(bool)
     # Nettoyer la colonne modèle
     df['Engine volume'].mask(
         df['Engine volume'].str.contains('Turbo'), other=df['Engine volume'].str[:-6], inplace=True)
@@ -81,7 +82,6 @@ def clean_model(df: pd.DataFrame):
         df['Model'].str.contains(georgian_alphabet_condition), other=split_and_join(df['Model'].loc[df['Model'].str.contains(georgian_alphabet_condition)].to_list()), inplace=True)
     # print(df.loc[df['Model'].str.contains("ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ"
     #                                       )])
-
     return df
 
 
@@ -94,4 +94,10 @@ def clean_cylinders(df: pd.DataFrame, min: float, max: float):
 def clean_wheel(df: pd.DataFrame):
     df.loc[df['Wheel'] == 'Left wheel', 'Wheel'] = 'Left'
     df.loc[df['Wheel'] == 'Right-hand drive', 'Wheel'] = 'Right'
+    return df
+
+
+def clean_leather_interior(df: pd.DataFrame):
+    df.loc[df['Leather interior'] == 'Yes', 'Leather interior'] = True
+    df.loc[df['Leather interior'] == 'No', 'Leather interior'] = False
     return df

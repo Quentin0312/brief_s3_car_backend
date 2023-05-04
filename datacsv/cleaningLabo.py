@@ -2,7 +2,6 @@
 # Toutes sauf levy, airbags et color
 
 import pandas as pd
-from cleaning_func import dropRowWithValue, dropRowsWithValues
 
 df = pd.read_csv('./datacsv/car_price_prediction.csv')
 # print(df.info())
@@ -34,13 +33,13 @@ for column in columns:
 # Nettoyer les valeurs abbérantes
 #
 # TODO:
-# Reste à vérif => (levy)
+# Reste à vérif => (levy), leather interior
 # Valeurs abbérantes trouvés:
 # Vérif format et type de données de chaques colonnes
 # ------------------------------------------------------------------
 
 liste_price = []
-for elt in df['Wheel'].unique():
+for elt in df['Leather interior'].unique():
     liste_price.append(elt)
 
 liste_price.sort()
