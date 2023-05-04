@@ -89,3 +89,9 @@ def clean_cylinders(df: pd.DataFrame, min: float, max: float):
     df.drop(df[df['Cylinders'] < min].index, inplace=True)
     df.drop(df[df['Cylinders'] > max].index, inplace=True)
     return df
+
+
+def clean_wheel(df: pd.DataFrame):
+    df.loc[df['Wheel'] == 'Left wheel', 'Wheel'] = 'Left'
+    df.loc[df['Wheel'] == 'Right-hand drive', 'Wheel'] = 'Right'
+    return df

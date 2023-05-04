@@ -34,13 +34,13 @@ for column in columns:
 # Nettoyer les valeurs abbérantes
 #
 # TODO:
-# Reste à vérif => (levy),cylinders, gear box type, drive wheels, wheel
+# Reste à vérif => (levy)
 # Valeurs abbérantes trouvés:
 # Vérif format et type de données de chaques colonnes
 # ------------------------------------------------------------------
 
 liste_price = []
-for elt in df['Cylinders'].unique():
+for elt in df['Wheel'].unique():
     liste_price.append(elt)
 
 liste_price.sort()
