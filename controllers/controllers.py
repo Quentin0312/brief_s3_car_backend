@@ -5,13 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer as mlb, OneHotEncoder
 from sklearn.metrics import mean_squared_error, r2_score
 
-# Préparer les datas du csc pour l'IA => encodage, normalisation, ...
-
-
-# Charger les datas du csv
-# Entrainer
-# Prédire
-
 
 class tests:
     def testSKLearn():
@@ -25,26 +18,6 @@ class tests:
         return result
 
     def mini_poc_test():
-        # # import
-        # df = pd.read_csv('./datacsv/mini_poc.csv')
-
-        # # Encoder "Manufacturer"
-        # enc = OneHotEncoder()
-        # manufacturers = [x.split(',') for x in df['Manufacturer']]
-        # manufac_enc = enc.fit_transform(manufacturers)
-
-        # # Enregistrement dans df
-        # # df['Manufacturer'] = pd.Series(list(manufac_enc))
-        # newDf = pd.DataFrame(manufac_enc)
-        # print(newDf)
-
-        # # # Fit
-        # # regr = svm.SVR()
-        # # regr.fit(df[['Manufacturer', 'Prod. year', 'Mileage']], df['Price'])
-        # # # Predict
-        # # result = regr.predict(
-        # #     [[5, 2020, 200000]])
-        # -------------------------------------------------test
         # Import
         df = pd.read_csv('./datacsv/mini_poc.csv')
 
@@ -78,9 +51,4 @@ class tests:
 
         rmse = mean_squared_error(y_test, y_pred, squared=False)
         rscore = r2_score(y_test, y_pred)
-        # Fit
-        # regr = svm.SVR()
-        # regr.fit(df_encoded.drop(columns=['Price']), df_encoded['Price'])
-        # print(df.drop(df['Price'], axis=0))
-        # print(df_encoded.head())
         return rscore

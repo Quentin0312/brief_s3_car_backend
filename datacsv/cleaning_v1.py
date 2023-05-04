@@ -7,7 +7,7 @@ alphabet_georgien = ['ა', 'ბ', 'გ', 'დ', 'ე', 'ვ', 'ზ', 'თ', '�
                      'პ', 'ჟ', 'რ', 'ს', 'ტ', 'უ', 'ფ', 'ქ', 'ღ', 'ყ', 'შ', 'ჩ', 'ც', 'ძ', 'წ', 'ჭ', 'ხ', 'ჯ', 'ჰ']
 
 
-df = pd.read_csv('./datacsv/car_price_prediction.csv')
+df = pd.read_csv('./datacsv/original.csv')
 
 # Colonnes enlevés: ID, Levy, Airbags et Color
 df = df[['Price', 'Manufacturer', 'Model', 'Prod. year', 'Category', 'Leather interior',
