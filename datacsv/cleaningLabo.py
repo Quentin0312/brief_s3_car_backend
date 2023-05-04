@@ -58,9 +58,25 @@ for column in columns:
 # print(df.dtypes)
 # print(df.head())
 # ------------------------------------------------------------------
+
+
+# Créer une nouvelle colone turbo remplit
+df.loc[df['Engine volume'].str.contains('Turbo'), 'Turbo'] = True
+df.loc[df['Turbo'] != True, 'Turbo'] = False
+
+# Nettoyer la colonne modèle
+df['Engine volume'] = df['Engine volume'].mask(
+    df['Engine volume'].str.contains('Turbo'), other=df['Engine volume'].str[:-6])
+
+# Changer le type de la serie
+
+df['Engine volume'] = df['Engine volume'].astype(float)
+
 liste_price = []
-for elt in df['Model'].unique():
+for elt in df['Engine volume'].unique():
     liste_price.append(elt)
 
 liste_price.sort()
 print(liste_price)
+
+# print(df)
