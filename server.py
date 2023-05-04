@@ -8,3 +8,4 @@ api.http.add_middleware(CORSMiddleware(api, allow_origins=['*']))
 api_base_url = "/api"
 
 hug.get(api_base_url + "/sklearnTest", api=api)(tests.testSKLearn)
+hug.get(api_base_url + "/mini_poc_test", api=api)(tests.mini_poc_test)

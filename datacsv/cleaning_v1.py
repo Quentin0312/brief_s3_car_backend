@@ -28,3 +28,14 @@ print("après suppr", str(len(df.index)))
 # => Suppr total: 2409
 
 # No need to clean "Gear box type", "Drive wheels", "Prod. year", "Category", "Fuel type"
+
+# ---------------------------------------------------------------------------------------------
+# Labo mini poc
+
+# enregistrer un échantillon propre du csv avec les colonnes: "Manufacturer", "Mileage" et "Prod. year"
+
+mini_poc_df = df.iloc[:100, [1, 3, 8]].copy()
+print(mini_poc_df.dtypes)
+
+# Enregistrer le nouveau csv
+mini_poc_df.to_csv('./datacsv/mini_poc.csv', index=False)
