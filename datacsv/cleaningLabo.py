@@ -30,16 +30,12 @@ for column in columns:
     # print(column, "=>", df[column].unique())
 
 
-# Nettoyer les valeurs abbérantes
-#
 # TODO:
-# Reste à vérif => (levy), leather interior
-# Valeurs abbérantes trouvés:
-# Vérif format et type de données de chaques colonnes
+# Reste à vérif => (levy)
 # ------------------------------------------------------------------
 
 liste_price = []
-for elt in df['Leather interior'].unique():
+for elt in df['Fuel type'].unique():
     liste_price.append(elt)
 
 liste_price.sort()
