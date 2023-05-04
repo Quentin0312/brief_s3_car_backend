@@ -6,10 +6,10 @@ import pandas as pd
 df = pd.read_csv('./datacsv/car_price_prediction.csv')
 # print(df.info())
 
-
+print(len(df.index))
 # Vérif les doublons ID -----------Pas de doublon-------------------
-# df.drop_duplicates(subset=['ID'], keep='first', inplace=True)
-
+df.drop_duplicates(subset=['ID'], keep='first', inplace=True)
+print(len(df.index))
 
 # valeurs manquantes---------------Aucune-----------
 # df.dropna(inplace=True)

@@ -1,3 +1,5 @@
+# TODO: Suppr les poublons
+
 from cleaning_func import clean_manufacturer, clean_mileage, clean_price, clean_engine_volume, clean_doors, clean_model, clean_cylinders, clean_wheel, clean_leather_interior
 import pandas as pd
 import pandas
@@ -33,8 +35,8 @@ print("après suppr", str(len(df.index)))
 # Labo mini poc
 
 # enregistrer un échantillon propre du csv avec les colonnes: "Manufacturer", "Mileage" et "Prod. year"
-
-mini_poc_df = df.iloc[:100, [1, 3, 8]].copy()
+print(df.info())
+mini_poc_df = df.iloc[:, [0, 1, 3, 8]].copy()
 print(mini_poc_df.dtypes)
 
 # Enregistrer le nouveau csv
