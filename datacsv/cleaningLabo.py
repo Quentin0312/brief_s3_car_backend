@@ -40,38 +40,9 @@ for column in columns:
 # ------------------------------------------------------------------
 
 liste_price = []
-for elt in df['Doors'].unique():
+for elt in df['Cylinders'].unique():
     liste_price.append(elt)
 
 liste_price.sort()
-# print(liste_price)
-# print(df)
-print(df.loc[df['Model'].str.contains("ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ"
-                                      )])
-# Faire un split puis un join
-
-
-def split_and_join(value: list):
-    print("value=>", value)
-    print(type(value))
-    listFinal = []
-    for elt in value:
-        myArray: list = elt.split(" ")
-        myArray.pop(-1)
-        finalValue = " ".join(myArray)
-        listFinal.append(finalValue)
-    print(listFinal)
-    return listFinal
-
-
-# final = split_and_join("ceci est un test")
-# print(final)
-# print(len(final))
-print("avant===========>", len(df.index))
-georgian_alphabet_condition = "ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ"
-df['Model'].mask(
-    df['Model'].str.contains(georgian_alphabet_condition), other=split_and_join(df['Model'].loc[df['Model'].str.contains(georgian_alphabet_condition)].to_list()), inplace=True)
-print("après===========>", len(df.index))
-
-print(df.loc[df['Model'].str.contains("ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ"
-                                      )])
+print(liste_price)
+print(df)

@@ -83,3 +83,9 @@ def clean_model(df: pd.DataFrame):
     #                                       )])
 
     return df
+
+
+def clean_cylinders(df: pd.DataFrame, min: float, max: float):
+    df.drop(df[df['Cylinders'] < min].index, inplace=True)
+    df.drop(df[df['Cylinders'] > max].index, inplace=True)
+    return df

@@ -1,4 +1,4 @@
-from cleaning_func import dropRowsWithValues, clean_mileage, clean_price, clean_engine_volume, clean_doors, clean_model
+from cleaning_func import dropRowsWithValues, clean_mileage, clean_price, clean_engine_volume, clean_doors, clean_model, clean_cylinders
 import pandas as pd
 import pandas
 alphabet_georgien = ['ა', 'ბ', 'გ', 'დ', 'ე', 'ვ', 'ზ', 'თ', 'ი', 'კ', 'ლ', 'მ', 'ნ', 'ო',
@@ -19,13 +19,10 @@ df = dropRowsWithValues(df, ['სხვა', 'TESLA'],
 df = clean_price(df, min=500, max=1000000)  # Price => 1664 lignes
 df = clean_mileage(df, min=500, max=1000000)  # Mileage => 805 lignes
 df = clean_engine_volume(df, 0.5, 8)  # Engine volume => 28 lignes
+df = clean_cylinders(df, min=2.0, max=12)  # Cylinders => 37 lignes
 df = clean_doors(df)  # Doors => 0 lignes
 df = clean_model(df)  # Model => 0 lignes
-# => Suppr total: 2396
-
+# => Suppr total: 2433
 
 print("après suppr", str(len(df.index)))
 # ----------------------------Labos-----------------------------------
-# Colonne Model contient des mots en géorgien ... =>
-# ces mots sont à suppr sans suppr la ligne !
-# Ensuite vérifier que pas de nom de model doublons (quasi doublon, espace en plus...)
