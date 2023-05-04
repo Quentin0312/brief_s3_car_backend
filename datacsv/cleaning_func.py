@@ -3,6 +3,7 @@ from typing import Union
 
 # TODO:
 # Factoriser les drop selon limites haute et basse
+# Et autre
 
 
 def dropRowWithValue(df: pd.DataFrame, value: Union[int, str], column: str):
@@ -51,4 +52,11 @@ def clean_engine_volume(df: pd.DataFrame, min: float, max: float):
     # Supprimer les valeurs abérantes
     df.drop(df[df['Engine volume'] < min].index, inplace=True)
     df.drop(df[df['Engine volume'] > max].index, inplace=True)
+    return df
+
+
+def clean_doors(df: pd.DataFrame):
+    for elt in [['02-Mar', '3'], ['04-May', '5'], ['>5', '5']]:
+        df['Doors'] = df['Doors'].mask(
+            df['Doors'].str.contains(elt[0]), other=elt[1])
     return df
