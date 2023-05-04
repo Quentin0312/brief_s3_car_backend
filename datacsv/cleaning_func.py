@@ -4,6 +4,8 @@ from typing import Union
 # TODO:
 # Factoriser les drop selon limites haute et basse
 # Et autre
+# Utiliser que des masks ou que .loc ?
+# Utiliser inplace true le plus possible
 
 
 def dropRowWithValue(df: pd.DataFrame, value: Union[int, str], column: str):
@@ -43,8 +45,8 @@ def clean_engine_volume(df: pd.DataFrame, min: float, max: float):
     df.loc[df['Turbo'] != True, 'Turbo'] = False
 
     # Nettoyer la colonne modèle
-    df['Engine volume'] = df['Engine volume'].mask(
-        df['Engine volume'].str.contains('Turbo'), other=df['Engine volume'].str[:-6])
+    df['Engine volume'].mask(
+        df['Engine volume'].str.contains('Turbo'), other=df['Engine volume'].str[:-6], inplace=True)
 
     # Changer le type de la serie
     df['Engine volume'] = df['Engine volume'].astype(float)
@@ -59,4 +61,25 @@ def clean_doors(df: pd.DataFrame):
     for elt in [['02-Mar', '3'], ['04-May', '5'], ['>5', '5']]:
         df['Doors'] = df['Doors'].mask(
             df['Doors'].str.contains(elt[0]), other=elt[1])
+    return df
+
+
+def clean_model(df: pd.DataFrame):
+    # TODO: 2 valeurs encore à nettoyer
+    georgian_alphabet_condition = "ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ"
+
+    def split_and_join(value: list[str]):
+        listFinal = []
+        for elt in value:
+            myArray: list = elt.split(" ")
+            myArray.pop(-1)
+            finalValue = " ".join(myArray)
+            listFinal.append(finalValue)
+        return listFinal
+
+    df['Model'].mask(
+        df['Model'].str.contains(georgian_alphabet_condition), other=split_and_join(df['Model'].loc[df['Model'].str.contains(georgian_alphabet_condition)].to_list()), inplace=True)
+    # print(df.loc[df['Model'].str.contains("ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ"
+    #                                       )])
+
     return df
