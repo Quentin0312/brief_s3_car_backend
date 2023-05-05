@@ -1,4 +1,5 @@
 # TODO: Suppr les poublons
+#  Certains model nom doublé ex (x-trail x-trail)
 
 from cleaning_func import clean_manufacturer, clean_mileage, clean_price, clean_engine_volume, clean_doors, clean_model, clean_cylinders, clean_wheel, clean_leather_interior
 import pandas as pd
