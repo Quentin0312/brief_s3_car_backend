@@ -97,7 +97,19 @@ def clean_wheel(df: pd.DataFrame):
     return df
 
 
+def clean_wheel_v2(df: pd.DataFrame):
+    df.loc[df['Wheel'] == 'Left wheel', 'Wheel'] = 'Left_wheel'
+    df.loc[df['Wheel'] == 'Right-hand drive', 'Wheel'] = 'Right_wheel'
+    return df
+
+
 def clean_leather_interior(df: pd.DataFrame):
     df.loc[df['Leather interior'] == 'Yes', 'Leather interior'] = True
     df.loc[df['Leather interior'] == 'No', 'Leather interior'] = False
+    return df
+
+
+def clean_leather_interior_v2(df: pd.DataFrame):
+    df.loc[df['Leather interior'] == 'Yes', 'Leather interior'] = "leather"
+    df.loc[df['Leather interior'] == 'No', 'Leather interior'] = "no_leather"
     return df

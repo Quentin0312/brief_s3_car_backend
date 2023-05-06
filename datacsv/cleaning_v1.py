@@ -14,6 +14,9 @@ df = pd.read_csv('./datacsv/original.csv')
 df = df[['Price', 'Manufacturer', 'Model', 'Prod. year', 'Category', 'Leather interior',
          'Fuel type', 'Engine volume', 'Mileage', 'Cylinders', 'Gear box type', 'Drive wheels', 'Doors', 'Wheel']]
 
+print(len(df.index))
+
+
 # Valeurs abérantes
 print("avant suppr", str(len(df.index)))
 
